@@ -8,7 +8,7 @@ def is_image(url):
     return False
 
 def print_to_stdout(clipboard_content):
-    print ("Found url: %s" % str(clipboard_content))
+    print ("Found and image. Saving it locally.")
 
 class ClipboardWatcher(threading.Thread):
     def __init__(self, predicate, callback, pause=1.):
