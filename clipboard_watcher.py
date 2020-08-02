@@ -7,9 +7,9 @@ from PIL import ImageGrab
 
 IMAGE_FOLDER = 'img'
 
-class ClipboardWatcher(threading.Thread):
+class clipboard_watcher(threading.Thread):
     def __init__(self, pause=1.):
-        super(ClipboardWatcher, self).__init__()
+        super(clipboard_watcher, self).__init__()
 
         self._pause = pause
         self._stopping = False
