@@ -24,7 +24,7 @@ class clipboard_watcher(threading.Thread):
 
     def stop(self):
         now = datetime.now()
-        print (f'{now.strftime("%Y/%m/%d %H:%M:%S")} - Stopping, caused by Keyboard Interrupt.')
+        print (f'{now.strftime("%Y/%m/%d %H:%M:%S")} - Stopping Clipboard Watcher.')
         self._stopping = True
 
     def save_image(self, clipboard_content):

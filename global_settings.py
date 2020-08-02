@@ -1,1 +1,2 @@
 IMAGE_DIR = 'img'
+ALLOWED_EXTENSIONS = ['.png']
