@@ -1,45 +1,17 @@
 import time
-import threading
-import pyperclip
-
-def is_image(url):
-    if url.startswith("https://") and not "bit.ly" in url:
-        return True
-    return False
+from ClipboardWatcher import ClipboardWatcher
 
 def print_to_stdout(clipboard_content):
-    print ("Found and image. Saving it locally.")
-
-class ClipboardWatcher(threading.Thread):
-    def __init__(self, predicate, callback, pause=1.):
-        super(ClipboardWatcher, self).__init__()
-        self._predicate = predicate
-        self._callback = callback
-        self._pause = pause
-        self._stopping = False
-
-    def run(self):       
-        recent_value = ""
-        while not self._stopping:
-            tmp_value = pyperclip.paste()
-            if tmp_value != recent_value:
-                recent_value = tmp_value
-                if self._predicate(recent_value):
-                    self._callback(recent_value)
-            time.sleep(self._pause)
-
-    def stop(self):
-        self._stopping = True
+    print ("Found a new image. Saving it locally.")
 
 def main():
-    watcher = ClipboardWatcher(is_url_but_not_bitly, 
-                               print_to_stdout,
-                               5.)
+    watcher = ClipboardWatcher( print_to_stdout,
+                                .5)
     watcher.start()
     while True:
         try:
             print("Waiting for changed clipboard...")
-            time.sleep(1)
+            time.sleep(10)
         except KeyboardInterrupt:
             watcher.stop()
             break
