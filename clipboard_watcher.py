@@ -4,8 +4,7 @@ from datetime import datetime
 from os import path
 from uuid import uuid4
 from PIL import ImageGrab
-
-IMAGE_FOLDER = 'img'
+from global_settings import IMAGE_DIR
 
 class clipboard_watcher(threading.Thread):
     def __init__(self, pause=1.):
@@ -32,7 +31,7 @@ class clipboard_watcher(threading.Thread):
         now = datetime.now()
         try:
             filename = str(uuid4()).replace('-','')+'.png'
-            clipboard_content.save(path.join(IMAGE_FOLDER, filename), 'PNG')
+            clipboard_content.save(path.join(IMAGE_DIR, filename), 'PNG')
             print (f'{now.strftime("%Y/%m/%d %H:%M:%S")} - Found a new image, saving it locally.')
         except:
             print (f'{now.strftime("%Y/%m/%d %H:%M:%S")} - Found a new image, but couldn\'t save it.')

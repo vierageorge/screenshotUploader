@@ -2,7 +2,7 @@ import time
 from clipboard_watcher import clipboard_watcher
 
 def main():
-    watcher = clipboard_watcher(.5)
+    watcher = clipboard_watcher(.2)
     watcher.start()
     while True:
         try:
