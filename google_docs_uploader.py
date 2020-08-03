@@ -6,10 +6,11 @@ from os.path import isfile, join, splitext
 from global_settings import IMAGE_DIR, ALLOWED_EXTENSIONS
 
 class google_docs_uploader(threading.Thread):
-    def __init__(self, pause=5.):
+    def __init__(self, file_url, pause=5.):
         super(google_docs_uploader, self).__init__()
         self._pause = pause
         self._stopping = False
+        self._file_id = file_url.replace('https://docs.google.com/document/d/','').split('/')[0]
 
     def run(self):       
         while not self._stopping:
